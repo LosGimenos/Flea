@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import firebase from '../../firebase.config.js';
 
-class Register extends Component {
+class Login extends Component {
   constructor() {
     super();
     this.state = {
       email: '',
-      password: '',
+      passwords: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,14 +21,11 @@ class Register extends Component {
   handleSubmit() {
     const { email, password } = this.state;
     firebase.auth()
-      .createUserWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(email, password)
       .catch((err) => {
+        const errorCode = err.code;
+        const errorMessage = err.message;
         console.log(err);
-      })
-      .then((user) => {
-        firebase.database().ref('users')
-          .child(user.uid)
-          .set({ first_name: '', last_name: '', e_mail: email });
       })
       .then(() => {
         this.props.router.push('/dashboard');
@@ -37,21 +34,19 @@ class Register extends Component {
   render() {
     return (
       <div>
-        <div>
-          <h2>Create a <span>Flea</span> profile</h2>
-        </div>
-        <div id="register-form">
+        <h2>Login</h2>
+        <div id="login-form">
           <div>
             <input name="email" onChange={this.handleChange} type="text" placeholder="email" />
           </div>
           <div>
             <input name="password" onChange={this.handleChange} type="password" placeholder="password" />
           </div>
-          <button className="button" onClick={this.handleSubmit}>Register</button>
+          <button className="button">Login</button>
         </div>
       </div>
     );
   }
 }
 
-export default withRouter(Register);
+export default Login;
