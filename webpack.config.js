@@ -7,10 +7,10 @@ module.exports = {
     inline: true,
     port: 8080,
   },
-  entry: path.join(__dirname, 'src', 'index.js'),
+  entry: path.join(__dirname, 'src', 'index.jsx'),
   output: {
     path: path.join(__dirname, 'src', 'static', 'js'),
-    filename: 'bundle.jsx',
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
