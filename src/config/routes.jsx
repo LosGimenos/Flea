@@ -6,6 +6,7 @@ import Register from '../components/register.jsx';
 import Login from '../components/login.jsx';
 import Dashboard from '../components/dashboard.jsx';
 import ToList from '../components/to_list.jsx';
+import UserConsole from '../components/user_console.jsx';
 
 const Routes = () => {
   return (
@@ -14,8 +15,10 @@ const Routes = () => {
         <IndexRoute component={Home} />
         <Route path="register" component={Register} />
         <Route path="login" component={Login} />
-        <Route path="dashboard" component={Dashboard} />
-        <Route path="list" component={ToList} />
+        <Route path="dashboard" component={UserConsole} >
+          <IndexRoute component={Dashboard} />
+          <Route path="list" component={ToList} />
+        </Route>
       </Route>
     </Router>
   );

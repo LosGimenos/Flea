@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
+import { hashHistory } from 'react-router';
 import request from 'superagent';
+import ToList from './to_list.jsx';
+
+const propTypes = {
+  children: React.PropTypes.element,
+};
 
 class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
-      item_type: '',
-      item_name: '',
-      item_description: '',
-      item_price: 0,
+      items: {},
     };
     this.httpPostItem = this.httpPostItem.bind(this);
     this.httpDeleteItem = this.httpDeleteItem.bind(this);
+    this.redirectToDashboard = this.redirectToDashboard.bind(this);
   }
   httpGetItems() {
     const url = 'https://flea-f71cd.firebaseio.com/items.json';
@@ -36,18 +40,32 @@ class Dashboard extends Component {
              this.httpGetItems();
            });
   }
+  redirectToDashboard() {
+    hashHistory.push('/dashboard');
+  }
   render() {
+    // const childProps = React.cloneElement(this.props.children, {
+    //   items: this.state.items,
+    //   saveItem: this.httpPostItem,
+    //   deleteItem: this.httpDeleteItem,
+    //   redirect: this.redirectToDashboard,
+    // });
     return (
       <div>
-        <div id="user-console">
-          <p>User options</p>
-        </div>
         <div>
           <h1>Flea Dashboard</h1>
+          <ToList
+            items={this.state.items}
+            saveItem={this.httpPostItem}
+            deleteItem={this.deleteItem}
+            redirect={this.redirectToDashboard}
+          />
         </div>
       </div>
     );
   }
 }
+
+Dashboard.propTypes = propTypes;
 
 export default Dashboard;

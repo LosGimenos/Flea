@@ -56,7 +56,6 @@ class Main extends Component {
           }
         </div>
         <div id="main-content">
-          Content goes here
           {this.props.children}
         </div>
       </div>
