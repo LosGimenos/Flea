@@ -12,7 +12,9 @@ class ToList extends Component {
       localItem_type: '',
       localItem_name: '',
       localItem_description: '',
-      localItem_price: 0,
+      localItem_price: '',
+      creatorId: '',
+      listId: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEditType = this.handleEditType.bind(this);
@@ -27,6 +29,7 @@ class ToList extends Component {
       itemName: this.state.localItem_name,
       itemDescription: this.state.localItem_description,
       itemPrice: this.state.localItem_price,
+      creatorId: 'email or params of creator',
     });
     this.props.redirect();
   }
@@ -51,17 +54,29 @@ class ToList extends Component {
       <div id="item-lister">
         <p>Got something to list?</p>
         <form onSubmit={this.handleSubmit}>
-          <input name="itemType" value={this.state.localItem_type} onChange={this.handleEditType} />
-          <input name="itemName" value={this.state.localItem_name} onChange={this.handleEditName} />
+          <input
+            name="itemType"
+            value={this.state.localItem_type}
+            onChange={this.handleEditType}
+            placeholder="Computer or Transport?"
+          />
+          <input
+            name="itemName"
+            value={this.state.localItem_name}
+            onChange={this.handleEditName}
+            placeholder="Item Name"
+          />
           <input
             name="itemDescription"
             value={this.state.localItem_description}
             onChange={this.handleEditDescription}
+            placeholder="Description"
           />
           <input
             name="itemPrice"
             value={this.state.localItem_price}
             onChange={this.handleEditPrice}
+            placeholder="How Muchee?"
           />
           <input type="submit" />
         </form>

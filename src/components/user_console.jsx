@@ -1,5 +1,4 @@
 import React from 'react';
-import Dashboard from './dashboard.jsx';
 
 const UserConsole = () => {
   return (
@@ -7,7 +6,6 @@ const UserConsole = () => {
       <div id="user-console">
         <p>User options</p>
       </div>
-      <Dashboard />
     </div>
   );
 };

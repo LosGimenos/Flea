@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
 import request from 'superagent';
 import ToList from './to_list.jsx';
+import Listings from './listings.jsx';
 
 const propTypes = {
   children: React.PropTypes.element,
@@ -16,6 +17,10 @@ class Dashboard extends Component {
     this.httpPostItem = this.httpPostItem.bind(this);
     this.httpDeleteItem = this.httpDeleteItem.bind(this);
     this.redirectToDashboard = this.redirectToDashboard.bind(this);
+    this.httpGetItems = this.httpGetItems.bind(this);
+  }
+  componentDidMount() {
+    this.httpGetItems();
   }
   httpGetItems() {
     const url = 'https://flea-f71cd.firebaseio.com/items.json';
@@ -44,27 +49,33 @@ class Dashboard extends Component {
     hashHistory.push('/dashboard');
   }
   render() {
-    // const childProps = React.cloneElement(this.props.children, {
-    //   items: this.state.items,
-    //   saveItem: this.httpPostItem,
-    //   deleteItem: this.httpDeleteItem,
-    //   redirect: this.redirectToDashboard,
-    // });
+    const childProps = React.cloneElement(this.props.children, {
+      items: this.state.items,
+      saveItem: this.httpPostItem,
+      deleteItem: this.httpDeleteItem,
+      redirect: this.redirectToDashboard,
+      getItems: this.httpGetItems,
+    });
     return (
       <div>
         <div>
           <h1>Flea Dashboard</h1>
-          <ToList
-            items={this.state.items}
-            saveItem={this.httpPostItem}
-            deleteItem={this.deleteItem}
-            redirect={this.redirectToDashboard}
-          />
+          {childProps}
         </div>
       </div>
     );
   }
 }
+
+/* <Listings items={this.state.items} /> */
+/*
+ <ToList
+            items={this.state.items}
+            saveItem={this.httpPostItem}
+            deleteItem={this.deleteItem}
+            redirect={this.redirectToDashboard}
+          />
+          */
 
 Dashboard.propTypes = propTypes;
 

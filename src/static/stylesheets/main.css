@@ -31,6 +31,14 @@
   width: 15%;
 }
 
+#list-item {
+  position: relative;
+  border: solid 1px black;
+  display: inline-block;
+  margin-right: 1em;
+  width: 20%;
+}
+
 #login {
   position: absolute;
   top: 1rem;
