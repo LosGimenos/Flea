@@ -53,7 +53,7 @@ class ToList extends Component {
     return (
       <div id="item-lister">
         <p>Got something to list?</p>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} id="list-form">
           <input
             name="itemType"
             value={this.state.localItem_type}

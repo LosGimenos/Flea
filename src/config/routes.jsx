@@ -4,7 +4,7 @@ import Main from '../components/main.jsx';
 import Home from '../components/home.jsx';
 import Register from '../components/register.jsx';
 import Login from '../components/login.jsx';
-import UserConsole from '../components/user_console.jsx';
+import requireAuth from '../utils/auth.js';
 import Dashboard from '../components/dashboard.jsx';
 import ToList from '../components/to_list.jsx';
 import Listings from '../components/listings.jsx';
@@ -17,7 +17,7 @@ const Routes = () => {
         <IndexRoute component={Home} />
         <Route path="register" component={Register} />
         <Route path="login" component={Login} />
-        <Route path="dashboard" component={Dashboard}>
+        <Route path="dashboard" component={Dashboard} onEnter={requireAuth} >
           <Route path="list" component={ToList} />
           <Route path="listings" component={Listings} />
           <Route path=":listId" component={ListItemShow} />

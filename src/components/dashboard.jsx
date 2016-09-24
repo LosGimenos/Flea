@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
 import request from 'superagent';
+import UserConsole from '../components/user_console.jsx';
 import ToList from './to_list.jsx';
 import Listings from './listings.jsx';
 
@@ -58,7 +59,8 @@ class Dashboard extends Component {
     });
     return (
       <div>
-        <div>
+        <UserConsole />
+        <div id="dashboard">
           <h1>Flea Dashboard</h1>
           {childProps}
         </div>

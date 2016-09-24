@@ -28,7 +28,8 @@ class Login extends Component {
         console.log(err);
       })
       .then(() => {
-        this.props.router.push('/dashboard');
+        console.log('you logged in!');
+        this.props.router.push('/dashboard/list');
       });
   }
   render() {
@@ -42,11 +43,11 @@ class Login extends Component {
           <div>
             <input name="password" onChange={this.handleChange} type="password" placeholder="password" />
           </div>
-          <button className="button">Login</button>
+          <button className="button" onClick={this.handleSubmit}>Login</button>
         </div>
       </div>
     );
   }
 }
 
-export default Login;
+export default withRouter(Login);

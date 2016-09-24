@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import firebase from 'firebase';
+import Footer from './footer.jsx';
 
 const propTypes = {
   children: React.PropTypes.element.isRequired,
@@ -58,6 +59,7 @@ class Main extends Component {
         <div id="main-content">
           {this.props.children}
         </div>
+        <Footer />
       </div>
     );
   }
