@@ -15,6 +15,7 @@ class ListItemShow extends Component {
       itemName: '',
       itemDescription: '',
       itemPrice: '',
+
     };
     const item = this.props.items[id] || defaultItem;
     return (
@@ -23,7 +24,13 @@ class ListItemShow extends Component {
         <h1>{item.itemType}</h1>
         <h3>{item.itemName}</h3>
         <p>{item.itemDescription}</p>
-        <BidBar item_price={item.itemPrice} updateItem={this.props.updateItem} listId={id} />
+        <BidBar
+          item_price={item.itemPrice}
+          bid_price={item.bidPrice}
+          updateItem={this.props.updateItem}
+          highestBidder={item.highestBidder}
+          listId={id}
+        />
       </div>
     );
   }

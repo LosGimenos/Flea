@@ -17,6 +17,9 @@ const Listings = (props) => {
           itemName={listing.itemName}
           itemDescription={listing.itemDescription}
           itemPrice={listing.itemPrice}
+          bidPrice={listing.bidPrice}
+          creatorId={listing.creatorId}
+          highestBidder={listing.highestBidder}
           key={idx}
         />
       </div>

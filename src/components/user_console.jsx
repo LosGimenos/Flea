@@ -12,6 +12,12 @@ const UserConsole = () => {
         <div>
           <Link to="/dashboard/list"><p>Sell a Computer</p></Link>
         </div>
+        <div>
+          <Link to="/dashboard/current_listings"><p>My Current Listings</p></Link>
+        </div>
+        <div>
+          <Link to="/dashboard/winning_bids"><p>My Winning Bids</p></Link>
+        </div>
       </div>
     </div>
   );

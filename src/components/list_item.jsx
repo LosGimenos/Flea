@@ -6,7 +6,10 @@ const propTypes = {
   itemName: React.PropTypes.string,
   itemDescription: React.PropTypes.string,
   itemPrice: React.PropTypes.string,
+  bidPrice: React.PropTypes.string,
   listId: React.PropTypes.string,
+  creatorId: React.PropTypes.string,
+  highestBidder: React.PropTypes.string,
 };
 
 const ListItem = (props) => {
@@ -15,9 +18,10 @@ const ListItem = (props) => {
       <div>
         <h3>{props.itemType}</h3>
         <h4>{props.itemName}</h4>
-        {props.itemDescription}
-        <p>${props.itemPrice}</p>
-        {props.listId}
+        <p>Sold by:</p>{props.creatorId}
+        <p>{props.itemDescription}</p>
+        <p>Initial Price: ${props.itemPrice}</p>
+        <p>Current Price: ${props.bidPrice}</p>
       </div>
     </Link>
   );

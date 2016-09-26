@@ -1,14 +1,15 @@
 import React from 'react';
 
 const propTypes = {
-  item_price_to_bidView: React.PropTypes.string,
+  bidPriceToBidView: React.PropTypes.string,
+  highestBidder: React.PropTypes.string,
 };
 
-const BidView = ({ item_price_to_bidView }) => {
+const BidView = ({ bidPriceToBidView, highestBidder }) => {
   return (
     <div>
-      <p>Highest bid:</p>${item_price_to_bidView}
-      <p>by: "USERNAME HERE"</p>
+      <p>Current bid:</p>${bidPriceToBidView}
+      <p>Current Winner:</p>{highestBidder}
     </div>
   );
 };

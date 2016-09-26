@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
 import request from 'superagent';
+import firebase from '../../firebase.config.js';
 import UserConsole from '../components/user_console.jsx';
 
 const propTypes = {
@@ -19,9 +20,15 @@ class Dashboard extends Component {
     this.redirectToDashboard = this.redirectToDashboard.bind(this);
     this.httpGetItems = this.httpGetItems.bind(this);
     this.httpUpdateItem = this.httpUpdateItem.bind(this);
+    this.setUserId = this.setUserId.bind(this);
   }
   componentDidMount() {
     this.httpGetItems();
+    this.setUserId();
+  }
+  setUserId() {
+    const user = firebase.auth().currentUser;
+    this.setState({ userId: user.email });
   }
   httpGetItems() {
     const url = 'https://flea-f71cd.firebaseio.com/items.json';
@@ -65,6 +72,7 @@ class Dashboard extends Component {
       redirect: this.redirectToDashboard,
       getItems: this.httpGetItems,
       updateItem: this.httpUpdateItem,
+      userLoginId: this.state.userId,
     });
     return (
       <div>

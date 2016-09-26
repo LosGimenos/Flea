@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 const propTypes = {
   saveItem: React.PropTypes.func,
   redirect: React.PropTypes.func,
+  userLoginId: React.PropTypes.string,
 };
 
 class ToList extends Component {
@@ -15,6 +16,8 @@ class ToList extends Component {
       localItem_price: '',
       creatorId: '',
       listId: '',
+      bidPrice: '',
+      highestBidder: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEditType = this.handleEditType.bind(this);
@@ -29,7 +32,9 @@ class ToList extends Component {
       itemName: this.state.localItem_name,
       itemDescription: this.state.localItem_description,
       itemPrice: this.state.localItem_price,
-      creatorId: 'email or params of creator',
+      bidPrice: this.state.bidPrice,
+      creatorId: this.props.userLoginId,
+      highestBidder: this.state.highestBidder,
     });
     this.props.redirect();
   }
