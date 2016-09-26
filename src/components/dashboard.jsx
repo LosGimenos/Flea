@@ -78,7 +78,6 @@ class Dashboard extends Component {
       <div>
         <UserConsole />
         <div id="dashboard">
-          <h1>Flea Dashboard</h1>
           {childProps}
         </div>
       </div>

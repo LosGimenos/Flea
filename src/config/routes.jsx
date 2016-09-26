@@ -10,6 +10,7 @@ import ToList from '../components/to_list.jsx';
 import Listings from '../components/listings.jsx';
 import ListItemShow from '../components/list_item_show.jsx';
 import CurrentListings from '../components/current_listings.jsx';
+import CurrentBids from '../components/current_bids.jsx';
 
 const Routes = () => {
   return (
@@ -22,6 +23,7 @@ const Routes = () => {
           <Route path="list" component={ToList} />
           <Route path="listings" component={Listings} />
           <Route path="current_listings" component={CurrentListings} />
+          <Route path="winning_bids" component={CurrentBids} />
           <Route path=":listId" component={ListItemShow} />
         </Route>
       </Route>

@@ -20,7 +20,6 @@ class ListItemShow extends Component {
     const item = this.props.items[id] || defaultItem;
     return (
       <div>
-        Here's the list item stuff
         <h1>{item.itemType}</h1>
         <h3>{item.itemName}</h3>
         <p>{item.itemDescription}</p>

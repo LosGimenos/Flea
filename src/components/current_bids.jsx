@@ -6,32 +6,31 @@ const propTypes = {
   userLoginId: React.PropTypes.string,
 };
 
-class CurrentListings extends Component {
+class CurrentBids extends Component {
   constructor() {
     super();
     this.state = {
-      currentLists: {},
+      currentBids: {},
     };
   }
   componentDidMount() {
-    this.findCurrentListings();
+    this.findCurrentBids();
   }
-  findCurrentListings() {
+  findCurrentBids() {
     const listIds = Object.keys(this.props.items);
     const userListings = listIds.map((id) => {
       const userList = this.props.items[id];
-      if (this.props.userLoginId === userList.creatorId) {
+      if (this.props.userLoginId === userList.highestBidder) {
         return userList;
       } return null;
     });
     const cleanList = userListings.filter((value) => { return value !== null });
-    this.setState({ currentLists: cleanList });
+    this.setState({ currentBids: cleanList });
   }
   render() {
-    const ids = Object.keys(this.state.currentLists);
+    const ids = Object.keys(this.state.currentBids);
     const itemElements = ids.map((id, idx) => {
-      console.log(id);
-      const listing = this.state.currentLists[id];
+      const listing = this.state.currentBids[id];
       return (
         <div id="list-item">
           <ListItem
@@ -50,7 +49,7 @@ class CurrentListings extends Component {
     });
     return (
       <div>
-        <h2>Your Listings!</h2>
+        <h2>Listings you are currently winning!</h2>
         <div>
           {itemElements}
         </div>
@@ -59,6 +58,6 @@ class CurrentListings extends Component {
   }
 }
 
-CurrentListings.propTypes = propTypes;
+CurrentBids.propTypes = propTypes;
 
-export default CurrentListings;
+export default CurrentBids;

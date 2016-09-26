@@ -57,7 +57,7 @@ class ToList extends Component {
   render() {
     return (
       <div id="item-lister">
-        <p>Got something to list?</p>
+        <h2>Got something to list?</h2>
         <form onSubmit={this.handleSubmit} id="list-form">
           <input
             name="itemType"

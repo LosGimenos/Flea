@@ -6,16 +6,16 @@ const UserConsole = () => {
     <div>
       <div id="user-console">
         <p>My Flea</p>
-        <div>
+        <div className="console">
           <Link to="/dashboard/listings"><p>Find a Computer</p></Link>
         </div>
-        <div>
+        <div className="console">
           <Link to="/dashboard/list"><p>Sell a Computer</p></Link>
         </div>
-        <div>
+        <div className="console">
           <Link to="/dashboard/current_listings"><p>My Current Listings</p></Link>
         </div>
-        <div>
+        <div className="console">
           <Link to="/dashboard/winning_bids"><p>My Winning Bids</p></Link>
         </div>
       </div>

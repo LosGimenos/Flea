@@ -3,9 +3,12 @@
   padding: 0;
 }
 
+body {
+  font-family: 'Titillium Web', sans-serif;
+}
+
 #main-nav {
   background-color: #34495e;
-  font-family: 'Titillium Web', sans-serif;
   color: white;
   position: absolute;
   top: 0;
@@ -36,6 +39,14 @@
   font-size: 80%;
 }
 
+#login-form input,
+#register-form input,
+#list-form input {
+  text-align: center;
+  height: 40%;
+  width: 40%;
+}
+
 #user-console {
   position: absolute;
   left: 0;
@@ -45,13 +56,40 @@
   height: 100%;
   width: 15%;
 }
+.console {
+ position: relative;
+ height: 5%;
+ margin-top: 5%;
+}
+
+.console :hover {
+  background-color: red;
+}
+
+.console :active {
+  background-color: purple;
+}
+
+.console a {
+  font-size: 120%;
+}
+#dashboard {
+  position: absolute;
+  right: 0;
+  width: 80%;
+}
 
 #list-item {
   position: relative;
   border: solid 1px black;
   display: inline-block;
   margin-right: 1em;
+  margin-top: 2%;
   width: 20%;
+}
+
+#list-item a {
+  color: #3498db;
 }
 
 #login {
