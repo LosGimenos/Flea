@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
 import request from 'superagent';
 import UserConsole from '../components/user_console.jsx';
-import ToList from './to_list.jsx';
-import Listings from './listings.jsx';
 
 const propTypes = {
   children: React.PropTypes.element,
@@ -14,11 +12,13 @@ class Dashboard extends Component {
     super();
     this.state = {
       items: {},
+      userId: '',
     };
     this.httpPostItem = this.httpPostItem.bind(this);
     this.httpDeleteItem = this.httpDeleteItem.bind(this);
     this.redirectToDashboard = this.redirectToDashboard.bind(this);
     this.httpGetItems = this.httpGetItems.bind(this);
+    this.httpUpdateItem = this.httpUpdateItem.bind(this);
   }
   componentDidMount() {
     this.httpGetItems();
@@ -46,6 +46,14 @@ class Dashboard extends Component {
              this.httpGetItems();
            });
   }
+  httpUpdateItem({ id, data }) {
+    const url = `https://flea-f71cd.firebaseio.com/items/${id}.json`;
+    request.patch(url)
+           .send(data)
+           .then(() => {
+             this.httpGetItems();
+           });
+  }
   redirectToDashboard() {
     hashHistory.push('/dashboard');
   }
@@ -56,6 +64,7 @@ class Dashboard extends Component {
       deleteItem: this.httpDeleteItem,
       redirect: this.redirectToDashboard,
       getItems: this.httpGetItems,
+      updateItem: this.httpUpdateItem,
     });
     return (
       <div>
@@ -68,16 +77,6 @@ class Dashboard extends Component {
     );
   }
 }
-
-/* <Listings items={this.state.items} /> */
-/*
- <ToList
-            items={this.state.items}
-            saveItem={this.httpPostItem}
-            deleteItem={this.deleteItem}
-            redirect={this.redirectToDashboard}
-          />
-          */
 
 Dashboard.propTypes = propTypes;
 
