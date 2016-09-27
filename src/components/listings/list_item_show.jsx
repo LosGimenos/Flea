@@ -1,13 +1,37 @@
 import React, { Component} from 'react';
-import BidBar from './bid_bar.jsx';
+import BidBar from '../bidding/bid_bar.jsx';
 
 const propTypes = {
   items: React.PropTypes.object,
   params: React.PropTypes.object,
   updateItem: React.PropTypes.func,
+  userLoginId: React.PropTypes.string,
+  deleteItem: React.PropTypes.func,
+  redirect: React.PropTypes.func,
 };
 
 class ListItemShow extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: this.props.params.listId,
+    };
+    this.submitHandler = this.submitHandler.bind(this);
+  }
+  submitHandler() {
+    this.props.deleteItem(this.state.id);
+    this.props.redirect();
+  }
+  checkId() {
+    const id = this.props.params.listId;
+    if (this.props.userLoginId === this.props.items[id].creatorId) {
+      return (
+        <button onClick={this.submitHandler}>
+          Remove
+        </button>
+      );
+    }
+  }
   render() {
     const id = this.props.params.listId;
     const defaultItem = {
@@ -15,7 +39,6 @@ class ListItemShow extends Component {
       itemName: '',
       itemDescription: '',
       itemPrice: '',
-
     };
     const item = this.props.items[id] || defaultItem;
     return (
@@ -30,6 +53,9 @@ class ListItemShow extends Component {
           highestBidder={item.highestBidder}
           listId={id}
         />
+        {
+          this.checkId()
+        }
       </div>
     );
   }

@@ -10,6 +10,7 @@ const propTypes = {
   listId: React.PropTypes.string,
   creatorId: React.PropTypes.string,
   highestBidder: React.PropTypes.string,
+  deleteItem: React.PropTypes.func,
 };
 
 const ListItem = (props) => {

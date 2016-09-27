@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { hashHistory } from 'react-router';
 import request from 'superagent';
-import firebase from '../../firebase.config.js';
-import UserConsole from '../components/user_console.jsx';
+import firebase from '../../../firebase.config.js';
+import UserConsole from '../user_console.jsx';
 
 const propTypes = {
   children: React.PropTypes.element,
@@ -62,7 +62,7 @@ class Dashboard extends Component {
            });
   }
   redirectToDashboard() {
-    hashHistory.push('/dashboard');
+    hashHistory.push('/dashboard/listings');
   }
   render() {
     const childProps = React.cloneElement(this.props.children, {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from '../../firebase.config.js';
+import firebase from '../../../firebase.config.js';
 import BidView from './bid_view.jsx';
 
 const propTypes = {

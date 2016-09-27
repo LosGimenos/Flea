@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ListItem from './list_item.jsx';
+import ListItem from './listings/list_item.jsx';
 
 const propTypes = {
   items: React.PropTypes.object,

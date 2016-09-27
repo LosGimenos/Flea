@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ListItem from './list_item.jsx';
+import ListItem from './listings/list_item.jsx';
 
 const propTypes = {
   items: React.PropTypes.object,
@@ -30,7 +30,6 @@ class CurrentListings extends Component {
   render() {
     const ids = Object.keys(this.state.currentLists);
     const itemElements = ids.map((id, idx) => {
-      console.log(id);
       const listing = this.state.currentLists[id];
       return (
         <div id="list-item">
